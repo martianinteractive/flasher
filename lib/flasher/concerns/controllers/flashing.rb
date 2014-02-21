@@ -8,13 +8,11 @@ module Flasher
         end
 
         def flash_to_headers
-          return unless request.xhr?
           [:error, :warning, :notice].each do |type|
             if flash[type]
-              response.headers["X-Ajax-#{type.to_s.humanize}"] = flash[type]
+              response.headers["X-RailsFlash-#{type.to_s.humanize}"] = flash[type]
             end
           end
-          flash.discard
         end
       end
     end

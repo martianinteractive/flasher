@@ -1,29 +1,39 @@
-$('<div id="flasher"></div>').prependTo 'body'
+jQuery ->
+  $('<div id="flasher-message"></div>').prependTo 'body'
 
-Flasher = ->
+Flasher = (->
 
-  // css_class =
-  //   Notice: "alert-success"
-  //   Warning: "alert-warning"
-  //   Error: "alert-danger"
+  css_class =
+    Notice: "success"
+    Warning: "warning"
+    Error: "error"
 
-  // hideFlash = ($flash) ->
-  //   $flash.slideUp 100, ->
-  //     $flash.remove()
-  //     return
+  options = $.extend({timeout: 5000}, options);
+
+  hideFlash = (flash) ->
+    flash.slideUp 100, ->
+      flash.remove()
+      return
 
   show: (request) ->
-    console.log 'from flasher'
-    // for type in ["Notice", "Warning", "Error"]
-    // msg = request.getResponseHeader("X-Ajax-#{type}")
-    // if msg?
-    //   flash = $("<div class=\"flasher-wrapper\"><div class=\"#{css_class[type]}\">#{msg}</div></div>")
+    for type in ["Notice", "Warning", "Error"]
+      msg = request.getResponseHeader("X-RailsFlash-#{type}")
+      console.log msg
+      if msg?
+        flash = $("<div class=\"flasher-wrapper\"><div class=\"#{css_class[type]}\">#{msg}</div></div>")
 
-    //   $('#flash').append("<div class=\"#{css_class[type]}\">#{msg}</div>")
-    //   $("#flash .alert").fadeTo("fast", 0.98).delay(600).fadeOut(1200, -> $(this).remove())
-()
+    $("#flasher-message").prepend flash
+    flash.hide().delay(300).slideDown 100
+    flash.click ->
+      hideFlash flash
+      return
 
+    if options.timeout > 0
+      setTimeout (->
+        hideFlash flash
+        return
+      ), options.timeout
+)()
 
 $(document).on 'ajaxComplete', (event, request) ->
-  Flasher.show
-
+  Flasher.show(request)

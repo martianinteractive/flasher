@@ -1,4 +1,4 @@
-#flasher-flash-messages {
+#flasher-message {
   position: fixed;
   top: 0;
   left: 0;
@@ -6,18 +6,26 @@
   z-index: 10000;
 }
 
-#flasher-flash-messages .flasher-flash-message-wrapper {
+#flasher-message .flasher-wrapper {
   padding: 10px 0;
-  background: #dcecaa;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
-#flasher-flash-messages .flasher-flash-message-wrapper.flasher-flash-error {
-  background: #ffe2e2;
+#flasher-message .flasher-wrapper .error {
+  background: #F2DEDE;
+  border-color: #EBCCD1;
+  color: #A94442;
 }
 
-#flasher-flash-messages .flasher-flash-message-wrapper .flasher-flash-message {
-  width: 960px;
-  margin: 0 auto;
+#flasher-message .flasher-wrapper .success {
+  background-color: #DFF0D8;
+  border-color: #D6E9C6;
+  color: #3C763D;
+}
+
+#flasher-message .flasher-wrapper .warning {
+  background-color: #FCF8E3;
+  border-color: #FAEBCC;
+  color: #8A6D3B;
 }
 
