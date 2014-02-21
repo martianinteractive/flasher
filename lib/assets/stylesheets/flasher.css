@@ -1,0 +1,23 @@
+#flasher-flash-messages {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+#flasher-flash-messages .flasher-flash-message-wrapper {
+  padding: 10px 0;
+  background: #dcecaa;
+  opacity: 0.8;
+}
+
+#flasher-flash-messages .flasher-flash-message-wrapper.flasher-flash-error {
+  background: #ffe2e2;
+}
+
+#flasher-flash-messages .flasher-flash-message-wrapper .flasher-flash-message {
+  width: 960px;
+  margin: 0 auto;
+}
+
