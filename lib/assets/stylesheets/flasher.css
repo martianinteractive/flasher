@@ -1,29 +1,47 @@
-#flasher-message {
+#flasher-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10000;
+  text-align: center;
+  cursor: pointer;
 }
 
-#flasher-message .flasher-wrapper {
-  padding: 10px 0;
-  opacity: 0.9;
+#flasher-container .flasher-wrapper {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 4px;
+  text-align: left;
 }
 
-#flasher-message .flasher-wrapper .error {
+#flasher-container .flasher-wrapper .flash {
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+#flasher-container .flasher-wrapper .error,
+#flasher-container .flasher-wrapper .alert {
   background: #F2DEDE;
   border-color: #EBCCD1;
   color: #A94442;
 }
 
-#flasher-message .flasher-wrapper .success {
+#flasher-container .flasher-wrapper .success {
   background-color: #DFF0D8;
   border-color: #D6E9C6;
   color: #3C763D;
 }
 
-#flasher-message .flasher-wrapper .warning {
+#flasher-container .flasher-wrapper .notice {
+  background-color: #D9EDF7;
+  border-color: #BCE8F1;
+  color: #31708F;
+}
+
+#flasher-container .flasher-wrapper .warning {
   background-color: #FCF8E3;
   border-color: #FAEBCC;
   color: #8A6D3B;
