@@ -1,39 +1,39 @@
 jQuery ->
-  $('<div id="flasher-message"></div>').prependTo 'body'
+  $('<div id="flasher-messages"></div>').prependTo 'body'
+  Flasher.showFlashFromCookies()
 
 Flasher = (->
-
-  css_class =
-    Notice: "success"
-    Warning: "warning"
-    Error: "error"
-
-  options = $.extend({timeout: 5000}, options);
-
   hideFlash = (flash) ->
     flash.slideUp 100, ->
       flash.remove()
-      return
 
-  show: (request) ->
-    for type in ["Notice", "Warning", "Error"]
-      msg = request.getResponseHeader("X-RailsFlash-#{type}")
-      console.log msg
-      if msg?
-        flash = $("<div class=\"flasher-wrapper\"><div class=\"#{css_class[type]}\">#{msg}</div></div>")
+  showFlashMessage = (message, options) ->
+    options = $.extend(type: "notice", timeout: 5000, options)
 
-    $("#flasher-message").prepend flash
+    flash = $("<div class='#{message['type']}'><div>#{message['message']}</div></div>")
+    console.log $("#flasher-messages").prepend flash
     flash.hide().delay(300).slideDown 100
     flash.click ->
       hideFlash flash
-      return
 
     if options.timeout > 0
       setTimeout (->
         hideFlash flash
-        return
       ), options.timeout
+
+  extractFlashFromCookies = (request) ->
+    if flash = Cookies.get('flash')
+      decoded = decodeURIComponent(flash.replace(/\+/g,'%20'))
+      data = $.parseJSON(decoded);
+      Cookies.remove('flash')
+      data
+
+  showFlashFromCookies: ->
+    flashMessages = extractFlashFromCookies() || []
+    $.each flashMessages, (_, flashMessage) ->
+      showFlashMessage(type: flashMessage[0], message: flashMessage[1])
+
 )()
 
 $(document).on 'ajaxComplete', (event, request) ->
-  Flasher.show(request)
+  Flasher.showFlashFromCookies()
