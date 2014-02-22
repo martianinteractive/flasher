@@ -8,7 +8,6 @@ module Flasher
         end
 
         def flash_to_cookie
-          # binding.pry
           return unless flash.any?
           cookies[:flash] = {:value => flash.to_json, :domain => :all}
           flash.discard
