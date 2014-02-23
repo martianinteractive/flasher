@@ -1,6 +1,13 @@
 jQuery ->
   $('<div id="flasher-container"></div>').prependTo 'body'
+
+  $(document).on 'page:load', ->
+    $('<div id="flasher-container"></div>').prependTo 'body'
+
   Flasher.show()
+
+  $(document).on 'ajaxComplete', (event, request) ->
+    Flasher.show()
 
 Flasher = (->
   hideFlash = (flash) ->
@@ -33,5 +40,4 @@ Flasher = (->
 
 )()
 
-$(document).on 'ajaxComplete', (event, request) ->
-  Flasher.show()
+
