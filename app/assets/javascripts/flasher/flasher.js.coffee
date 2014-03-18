@@ -28,10 +28,9 @@ Flasher = (->
     ), options.timeout
 
   getFlashFromCookies = (request) ->
-    if flash = Cookies.get('flash')
-      decoded = $.parseJSON(decodeURIComponent(flash.replace(/\+/g,'%20')))
-      Cookies.remove('flash')
-      decoded
+    if flash = $.cookie('flash')
+      $.removeCookie('flash');
+      flash
 
   show: ->
     flashMessages = getFlashFromCookies() || []
