@@ -9,7 +9,7 @@ module Flasher
 
         def flash_to_cookie
           return unless flash.any?
-          cookies[:flash] = {:value => flash.to_json, :domain => :all}
+          cookies[:flash] = {:value => flash.to_json}
           flash.discard
         end
       end
