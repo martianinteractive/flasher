@@ -1,4 +1,5 @@
 jQuery ->
+  $.cookie.json = true
   $('<div id="flasher-container"></div>').prependTo 'body'
 
   $(document).on 'page:load', ->
