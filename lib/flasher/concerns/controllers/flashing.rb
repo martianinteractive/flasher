@@ -8,6 +8,7 @@ module Flasher
         end
 
         def flash_to_cookie
+          cookies[:flash] = nil if flash.empty? && cookies[:flash].present?
           return unless flash.any?
           cookies[:flash] = {:value => flash.to_json}
           flash.discard
