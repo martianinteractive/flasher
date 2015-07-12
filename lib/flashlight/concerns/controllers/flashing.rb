@@ -1,4 +1,4 @@
-module Flasher
+module Flashlight
   module Concerns
     module Controllers
       module Flashing

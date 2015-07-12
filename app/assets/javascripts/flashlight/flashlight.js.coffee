@@ -1,16 +1,16 @@
 jQuery ->
   $.cookie.json = true
-  $('<div id="flasher-container"></div>').prependTo 'body'
+  $('<div id="flashlight-container"></div>').prependTo 'body'
 
   $(document).on 'page:load', ->
-    $('<div id="flasher-container"></div>').prependTo 'body'
+    $('<div id="flashlight-container"></div>').prependTo 'body'
 
-  Flasher.show()
+  Flashlight.show()
 
   $(document).on 'ajaxComplete', (event, request) ->
-    Flasher.show()
+    Flashlight.show()
 
-Flasher = (->
+Flashlight = (->
   hideFlash = (flash) ->
     flash.slideUp 100, ->
       flash.remove()
@@ -18,8 +18,8 @@ Flasher = (->
   flashMessage = (message, options) ->
     options = $.extend(type: "notice", timeout: 5000, options)
 
-    flash = $("<div class='flasher-wrapper'><div class='flash #{message['type']}'>#{message['message']}</div></div>")
-    $("#flasher-container").prepend flash
+    flash = $("<div class='flashlight-wrapper'><div class='flash #{message['type']}'>#{message['message']}</div></div>")
+    $("#flashlight-container").prepend flash
     flash.hide().delay(300).slideDown 100
     flash.click ->
       hideFlash flash

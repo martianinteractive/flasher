@@ -1,4 +1,4 @@
-#flasher-container {
+#flashlight-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,40 +8,40 @@
   text-align: center;
 }
 
-#flasher-container .flasher-wrapper {
+#flashlight-container .flashlight-wrapper {
   margin-top: 4px;
   text-align: left;
   width: 340px;
   display: inline-block; 
 }
 
-#flasher-container .flasher-wrapper .flash {
+#flashlight-container .flashlight-wrapper .flash {
   padding: 3px;
   border-radius: 3px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0);
 }
 
-#flasher-container .flasher-wrapper .error,
-#flasher-container .flasher-wrapper .alert {
+#flashlight-container .flashlight-wrapper .error,
+#flashlight-container .flashlight-wrapper .alert {
   background: #F2DEDE;
   border-color: #EBCCD1;
   color: #A94442;
 }
 
-#flasher-container .flasher-wrapper .success {
+#flashlight-container .flashlight-wrapper .success {
   background-color: #DFF0D8;
   border-color: #D6E9C6;
   color: #3C763D;
 }
 
-#flasher-container .flasher-wrapper .notice {
+#flashlight-container .flashlight-wrapper .notice {
   background-color: #D9EDF7;
   border-color: #BCE8F1;
   color: #31708F;
 }
 
-#flasher-container .flasher-wrapper .warning {
+#flashlight-container .flashlight-wrapper .warning {
   background-color: #FCF8E3;
   border-color: #FAEBCC;
   color: #8A6D3B;
